@@ -49,7 +49,7 @@ A hosted service such as [auth0](https://auth0.com/docs/secure/tokens/json-web-t
 
 ## API Payload Hash
 
-If the API method is POST, PUT or PATCH, the API payload will have to be hashed with SHA-256. The Payload should be standardized [as below](#apex-standardized-json-payload) (for JSON payload).
+If the API method is POST, PUT or PATCH, the API payload binary will have to be hashed using SHA-256. The Payload should be standardized [as below](#apex-standardized-json-payload) (for JSON payload).
 
 <!-- TODO: Include Sample Code -->
 
@@ -99,7 +99,7 @@ It is recommended that the JWK generated in the [Prerequisite](#prerequisites-jw
 
 ## Hello World! APIs
 
-These [APIs](docs/hello-world/jwt-auth.md) can be subscribed to and can help the Devloper to test the signed JWT:
+These [APIs](docs/hello-world/jwt-auth.md) can be subscribed to and can help the Developer to test the signed JWT:
 
 - Evaluate if the JWT authentication header has been generated correctly.
-- Test and evaluate the SHA256 hash which is sent to the API.
+- Evaluate the SHA256 hash of the API payload binary which is sent to the API.
