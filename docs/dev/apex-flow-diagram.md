@@ -4,16 +4,16 @@ The following are the flow diagram for the different scenarios:
 
 ## Bridging Cross-Zone APIs from Intranet
 
-![import-backend-api](./image/1download.png)
+![bridging-internet](./image/bridging-internet.png)
 
 ## Bridging Cross-Zone APIs from Internet
 
-![import-backend-api](./image/2download.png)
+![bridging-intranet](./image/bridging-intranet.png)
 
 ## Single Zone APIs from Intranet
 
-![import-backend-api](./image/3download.png)
+![flow-intranet](./image/flow-intranet.png)
 
 ## Single Zone APIs from Internet
 
-![import-backend-api](./image/4download.png)
+![flow-intranet](./image/flow-internet.png)
