@@ -1,4 +1,4 @@
-# JWT Flow Diagram
+# JWT Flow Diagrams
 
 The following are the flow diagram for the different scenarios:
 

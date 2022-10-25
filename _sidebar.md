@@ -3,6 +3,6 @@
 - **Developers**
   - [Introduction to JWT](docs/dev/introduction.md)
   - [JWT Authentication](docs/dev/jwt-auth.md)
-  - [APEX Flow Diagram](docs/dev/apex-flow-diagram.md)
+  - [APEX Flow Diagrams](docs/dev/apex-flow-diagrams.md)
 - **Hello World!**
   - [JWT Authentication](docs/hello-world/jwt-auth.md)
