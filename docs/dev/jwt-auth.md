@@ -101,5 +101,5 @@ It is recommended that the JWK generated in the [Prerequisite](#prerequisites-jw
 
 These [APIs](docs/hello-world/jwt-auth.md) can be subscribed to and can help the Devloper to test the signed JWT:
 
-- Evaluate if the JWT authencation header has been generated correctly.
+- Evaluate if the JWT authentication header has been generated correctly.
 - Test and evaluate the SHA256 hash which is sent to the API.
