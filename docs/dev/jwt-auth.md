@@ -12,7 +12,9 @@ The Developer will have to create the respective Application(s) to subscribe to 
 
 Please note that 2 API Keys will be required for bridging APIs.  The Publisher should inform you if your API is a bridging API.
 
-<!-- TODO: Add image of API Key(s)-->
+> ![Image](../dev/image/api-key-manager-1.png) *For API Manager Users*
+
+> ![Image](../dev/image/api-key-portal-1.png) ![Image](../dev/image/api-key-portal-2.png) *For API Developer Portal Users*
 
 ## Prerequisites-JWKS Endpoint
 
