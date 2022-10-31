@@ -87,7 +87,7 @@ The JWT can be generated using common libraries available based on RFC7519 with 
 |9  |sub|This is the method of the API (eg.  ***POST***)|
 |10 |data|This is the SHA-256 [API Payload Hash](#api-payload-hash) of the payload of API.(eg.  SHA-256 hash of ***{"payload":"data"}*** is ***cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc***|
 
-Please see [here](docs/dev/apex-sample-code.md) for sample codes to generate the JWT.
+Please see [here](docs/dev/apex-sample-codes.md) for sample codes to generate the JWT.
 
 ## Authorization Header
 
@@ -101,7 +101,7 @@ x-apex-jwt: eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFwZXgtZXhhbXBsZSJ9.eyJ
 
 ## JWK Rotation
 
-It is recommended that the JWK generated in the [Prerequisite](#prerequisites-api-keys) step used in the signing of JWT is rotated at least monthly.   As the JWKS consists of a collection (array) of JWKs, rotation can be done by replacing the JWKS entirely or by changing the Key ID (kid) if there are a number of JWKs in the JWKS published to APEX.
+It is recommended that the JWK generated in the [Prerequisite](#prerequisites-jwks-endpoint) step used in the signing of JWT is rotated at least monthly.   As the JWKS consists of a collection (array) of JWKs, rotation can be done by replacing the JWKS entirely or by changing the Key ID (kid) if there are a number of JWKs in the JWKS published to APEX.
 
 ## Hello World! APIs
 

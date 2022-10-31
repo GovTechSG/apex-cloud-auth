@@ -8,7 +8,7 @@ Use the navigation menu on the left to browse the documentation. You can also se
 Here are some suggestions to get started:
 
 - [Introduction to JWT](/docs/dev/introduction.md)
-- [Introduction to JWT Authentication](/docs/dev/jwt-auth.md)
+- [JWT Authentication](/docs/dev/jwt-auth.md)
 - [APEX Flow Diagrams](/docs/dev/apex-flow-diagrams.md)
 - [APEX Sample Codes](/docs/dev/apex-sample-codes.md)
 - [Introduction to Hello World APIs](/docs/hello-world/jwt-auth.md)
