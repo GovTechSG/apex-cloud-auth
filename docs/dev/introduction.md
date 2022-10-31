@@ -43,3 +43,5 @@ An explanation of typical JWT claims used are as follows:
 |7  |iss|This identifies the principal that issued the JWT.|
 |8  |aud|This identifies the recipients that the JWT is intended for.|
 |9  |sub|This identifies the principal that is the subject of the JWT.|
+
+Other guides for JWT can be found [here](https://auth0.com/docs/secure/tokens/json-web-tokens) and [here](https://jwt.io/introduction).

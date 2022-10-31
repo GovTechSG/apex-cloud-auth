@@ -45,7 +45,7 @@ const getJWT = async (iss, sub, kid, aud, data, privateKey) => {
   /* 
       ***** ADD THE JWT SIGNING OPTIONS ******
       The signing options are adding here based on function input.
-      Isseud at time, or 'iat' is added by the library.
+      Issued at time, or 'iat' is added by the library.
   */
   const signOptions = {
     algorithm: 'ES256',
