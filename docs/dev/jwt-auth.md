@@ -2,6 +2,11 @@
 
 APEX Supports JWT Authentication as a secure means to secure the API transaction between a Consumer (API Requester) and Publisher (owner of API endpoint).
 
+## Terminology
+
+Publisher - This is the owner of the API endpoint hosted on APEX, which may be an Agency.
+Developer/Consumer - This is the developer of the application which will use (or consume) the API belonging to the Publisher.
+
 ## Prerequisites-API Endpoint URL
 
 The Developer will have to get the API Endpoint URL from the Publisher.   This will be the API which the API request is to be made to.  (eg.  <https://public-stg.api.gov.sg/agency/api>)
@@ -10,11 +15,11 @@ The Developer will have to get the API Endpoint URL from the Publisher.   This w
 
 The Developer will have to create the respective Application(s) to subscribe to the API(s) provided by the Publisher.  (eg.  xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx)
 
-Please note that 2 API Keys will be required for bridging APIs.  The Publisher should inform you if your API is a bridging API.
-
-> ![Image](../dev/image/api-key-manager-1.png) *For API Manager Users*
+Please note that 2 API Keys will be required for a bridging API.  The Publisher should inform you if your API is a bridging API.
 
 > ![Image](../dev/image/api-key-portal-1.png) ![Image](../dev/image/api-key-portal-2.png) *For API Developer Portal Users*
+
+> ![Image](../dev/image/api-key-manager-1.png) *For API Manager Users*
 
 ## Prerequisites-JWKS Endpoint
 
@@ -109,4 +114,4 @@ It is recommended that the JWK generated in the [Prerequisite](#prerequisites-jw
 
 These [APIs](docs/hello-world/jwt-auth.md) can be subscribed to and can help the Developer to:
 - Evaluate if the JWT authentication header has been generated correctly.
-- Evaluate the SHA256 hash of the API payload binary which is sent to the API.
+- Evaluate the SHA-256 hash of the API payload binary which is sent to the API.
