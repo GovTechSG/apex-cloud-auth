@@ -31,7 +31,7 @@ The Developer will have to generate a JSON Web Key (JWK) set for signing their a
 With the **public key** generated, the developer will have to either,
 
 - Publish a JWKS (JSON Web Key Set) endpoint ([RFC7517](https://www.rfc-editor.org/rfc/rfc7517#appendix-A.1)) in the Endian [format](#example-of-jwks) typically in the URL of https://your-domain/.well-known/jwks.json, or
-- Provide a string text of JWKS in the same [format](#example-of-jwks) when creating the APEX Application.
+- In the APEX API Portal or API Manager, provide a string text of JWKS in the same [format](#example-of-jwks) when creating the APEX Application.
 
 Do note that your key ID (kid) is used to identify your signing key in case more than 1 key exists in the JWKS (such as for purposes of key rotation).
 
@@ -63,7 +63,7 @@ This is an example of a public JWKS with a JWK consisting of Endian coordinates 
 
 If the API method is POST, PUT or PATCH, the API payload binary will have to be hashed using SHA-256.  The Payload should be standardized [as below](#apex-standardized-json-payload) (for JSON payload).
 
-<!-- TODO: Include Sample Code -->
+<!-- TODO: Optionally Include Sample Code -->
 
 ## <small>**APEX Standardized JSON Payload**
 
@@ -97,7 +97,7 @@ The JWT can be generated using common libraries available based on RFC7519 with 
 |9  |sub|This is the method of the API (eg.  ***POST***)|
 |10 |data|This is the SHA-256 [API Payload Hash](#api-payload-hash) of the payload of API.(eg.  SHA-256 hash of ***{"payload":"data"}*** is ***cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc***|
 
-Please see [here](docs/dev/apex-sample-codes.md) for sample codes to generate the JWT.
+Please see [here](docs/sample-codes/jwt-auth.md) for sample codes to generate the JWT.
 
 ## Authorization Header
 

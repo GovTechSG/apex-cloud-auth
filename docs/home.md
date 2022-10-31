@@ -10,5 +10,5 @@ Here are some suggestions to get started:
 - [Introduction to JWT](/docs/dev/introduction.md)
 - [JWT Authentication](/docs/dev/jwt-auth.md)
 - [APEX Flow Diagrams](/docs/dev/apex-flow-diagrams.md)
-- [APEX Sample Codes](/docs/dev/apex-sample-codes.md)
+- [Sample Codes](/docs/sample-codes/jwt-auth.md)
 - [Introduction to Hello World APIs](/docs/hello-world/jwt-auth.md)

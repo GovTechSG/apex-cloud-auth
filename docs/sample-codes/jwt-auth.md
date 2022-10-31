@@ -1,4 +1,4 @@
-# Sample Codes
+# JWT Authentication Sample Codes
 
 These are sample codes to help the Developer in coding for the JWT header.  Do note that these are for reference only and not intended for production use.
 
@@ -117,3 +117,21 @@ getJWT(issuer, subject, keyId, audience, data, privateKey);
 <!-- TODO: Include Sample Code for JAVA -->
 
 <!-- TODO: Include Sample Code for C# -->
+
+## Sample Output
+```
+Payload-
+{"payload":"data"}
+
+Hash-
+cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc
+
+JWT Payload-
+{"data":"cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc"}
+
+JWT SignOptions-
+{"algorithm":"ES256","keyid":"apex-example","expiresIn":"180s","jwtid":"3df28ac5-09d5-49ad-b61a-ac2c30de15d8","issuer":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy","audience":"https://public-stg.api.gov.sg/agency/api","subject":"POST"}
+
+JWT-
+eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFwZXgtZXhhbXBsZSJ9.eyJkYXRhIjoiY2M1NzVjNGVkNTU3NDgxZTMxZDlhMmEwNTgwYmM0NjRlODRiM2E3OWM1ZmM5NGU0ZmQ5NGJhMzNiM2U1NGRiYyIsImlhdCI6MTY2NzIxMjU3MiwiZXhwIjoxNjY3MjEyNzUyLCJhdWQiOiJodHRwczovL3B1YmxpYy1zdGcuYXBpLmdvdi5zZy9hZ2VuY3kvYXBpIiwiaXNzIjoieHh4eHh4eHgteHh4eC14eHh4LXh4eHgteHh4eHh4eHh4eHgseXl5eXl5eXkteXl5eS15eXl5LXl5eXkteXl5eXl5eXl5eXkiLCJzdWIiOiJQT1NUIiwianRpIjoiM2RmMjhhYzUtMDlkNS00OWFkLWI2MWEtYWMyYzMwZGUxNWQ4In0.ZBCr7osa7rokj5eOGSLvpQMAyE9glb30gczZscdlxtF5LLuj192krGTn8lTsjk5sojU0U9F4pS4JSvGXXl7ooQ
+```
