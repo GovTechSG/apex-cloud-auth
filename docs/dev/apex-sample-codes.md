@@ -77,8 +77,6 @@ const getJWT = async (iss, sub, kid, aud, data, privateKey) => {
 
 /*
     ***** DEFINE SIGNING VARIABLES *****
-    This is a sample private key.  In a real scenario this will be in a secure vault and should not be in program code.
-
     Here the following JWT claims are defined:
     - issuer
     - subject
@@ -87,6 +85,9 @@ const getJWT = async (iss, sub, kid, aud, data, privateKey) => {
     - JSON payload
     - private key
     - payload hash (data)
+
+    The code below contains a sample private key.  
+    In a real scenario this will be in a secure vault and should not be in program code.
 */
 const issuer = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy';
 const subject = 'POST';
