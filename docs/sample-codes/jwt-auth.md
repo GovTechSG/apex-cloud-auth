@@ -65,9 +65,8 @@ const getJWT = async (iss, sub, kid, aud, data, privateKey) => {
       The JWT is created here to be used for the authentication header.
   */
   const jwtAuth = jwt.sign(payload, caPrivateKey, signOptions);
-  console.log(`JWT Signing Options-\n${JSON.stringify(signOptions)}\n`);
-  console.log(`Additional JWT Payload-\n${JSON.stringify(payload)}\n`);
   console.log(`JWT-\n${jwtAuth}\n`);
+  console.log(`Decoded JWT-\n${JSON.stringify(jwt.decode(jwtAuth,{complete:true}),null)}\n`);
   return jwtAuth;
 };
 
@@ -126,12 +125,9 @@ Payload-
 Hash-
 cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc
 
-JWT Payload-
-{"data":"cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc"}
-
-JWT SignOptions-
-{"algorithm":"ES256","keyid":"apex-example","expiresIn":"180s","jwtid":"3df28ac5-09d5-49ad-b61a-ac2c30de15d8","issuer":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy","audience":"https://public-stg.api.gov.sg/agency/api","subject":"POST"}
-
 JWT-
-eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFwZXgtZXhhbXBsZSJ9.eyJkYXRhIjoiY2M1NzVjNGVkNTU3NDgxZTMxZDlhMmEwNTgwYmM0NjRlODRiM2E3OWM1ZmM5NGU0ZmQ5NGJhMzNiM2U1NGRiYyIsImlhdCI6MTY2NzIxMjU3MiwiZXhwIjoxNjY3MjEyNzUyLCJhdWQiOiJodHRwczovL3B1YmxpYy1zdGcuYXBpLmdvdi5zZy9hZ2VuY3kvYXBpIiwiaXNzIjoieHh4eHh4eHgteHh4eC14eHh4LXh4eHgteHh4eHh4eHh4eHgseXl5eXl5eXkteXl5eS15eXl5LXl5eXkteXl5eXl5eXl5eXkiLCJzdWIiOiJQT1NUIiwianRpIjoiM2RmMjhhYzUtMDlkNS00OWFkLWI2MWEtYWMyYzMwZGUxNWQ4In0.ZBCr7osa7rokj5eOGSLvpQMAyE9glb30gczZscdlxtF5LLuj192krGTn8lTsjk5sojU0U9F4pS4JSvGXXl7ooQ
+eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFwZXgtZXhhbXBsZSJ9.eyJkYXRhIjoiY2M1NzVjNGVkNTU3NDgxZTMxZDlhMmEwNTgwYmM0NjRlODRiM2E3OWM1ZmM5NGU0ZmQ5NGJhMzNiM2U1NGRiYyIsImlhdCI6MTY2NzI3MzUwNiwiZXhwIjoxNjY3MjczNjg2LCJhdWQiOiJodHRwczovL3B1YmxpYy1zdGcuYXBpLmdvdi5zZy9hZ2VuY3kvYXBpIiwiaXNzIjoieHh4eHh4eHgteHh4eC14eHh4LXh4eHgteHh4eHh4eHh4eHgseXl5eXl5eXkteXl5eS15eXl5LXl5eXkteXl5eXl5eXl5eXkiLCJzdWIiOiJQT1NUIiwianRpIjoiZWYxYzJjN2EtNTlhNi00NjZiLThlNTQtZDFlZTM5MWVhYTE3In0.IArhd2SJ1hoIkJlek1KKwoGPXahYOJ5bmgJTMnuUdPDiBR57iPdLY3SvqJj3qP-KHmdCt6HCDjM-6nawGYIJ6Q
+
+Decoded JWT-
+{"header":{"alg":"ES256","typ":"JWT","kid":"apex-example"},"payload":{"data":"cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc","iat":1667273506,"exp":1667273686,"aud":"https://public-stg.api.gov.sg/agency/api","iss":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy","sub":"POST","jti":"ef1c2c7a-59a6-466b-8e54-d1ee391eaa17"},"signature":"IArhd2SJ1hoIkJlek1KKwoGPXahYOJ5bmgJTMnuUdPDiBR57iPdLY3SvqJj3qP-KHmdCt6HCDjM-6nawGYIJ6Q"}
 ```
