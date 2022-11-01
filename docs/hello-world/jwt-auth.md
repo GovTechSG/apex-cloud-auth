@@ -2,7 +2,7 @@
 
 Hello World! APIs are used to test authorization header (***x-apex-jwt***), to help developers in testing their signing codes. 
 
-## Hello World!
+## Hello World! using JWT Authentication
 
 This API tests that the JWT in **x-apex-jwt** header is valid and will return with a Hello World! if successfully authenticated.
 
@@ -45,5 +45,21 @@ HTTP/1.1 200 OK
 cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc
 
 {"payload":"data"} 
+```
+<!-- TODO: Include Swagger and screenshot -->
+
+## Hello World! using API Key
+
+This API tests that the JWT in **x-apex-apikey** header is valid and will return with a Hello World! if successfully authenticated.
+
+Example API Test:
+```
+POST /helloworld/apikey
+Host: public-stg.api.gov.sg
+x-apex-apikey: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+
+Response:
+HTTP/1.1 200 OK
+Hello World!
 ```
 <!-- TODO: Include Swagger and screenshot -->
