@@ -26,6 +26,7 @@ Example API Test:
 ```
 POST /helloworld/sha256
 Host: public-stg.api.gov.sg
+x-apex-apikey: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 {"payload":"data"} 
 
 Response:
@@ -37,6 +38,7 @@ Example API Test with x-apex-returncontent:
 ```
 POST /helloworld/sha256
 Host: public-stg.api.gov.sg
+x-apex-apikey: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 x-apex-returncontent: yes
 {"payload":"data"} 
 
