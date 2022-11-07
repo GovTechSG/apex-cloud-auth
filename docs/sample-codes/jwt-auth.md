@@ -15,6 +15,12 @@ const jwt = require('jsonwebtoken');
 const {v4: uuidv4} = require('uuid');
 
 /*
+    FUNCTION TO RETURN STRINGIFY OUTPUT
+*/
+function stringify(json) {
+  return JSON.stringify(json,null);
+}
+/*
     ***** FUNCTION TO RETURN SHA-256 ENCODING *****
 */
 function hash(string) {
@@ -64,9 +70,12 @@ const getJWT = async (iss, sub, kid, aud, data, privateKey) => {
       ***** CREATE JWT *****
       The JWT is created here to be used for the authentication header.
   */
-  const jwtAuth = jwt.sign(payload, caPrivateKey, signOptions);
+  var jwtAuth = jwt.sign(payload, caPrivateKey, signOptions);
+  var jwtDecoded = jwt.decode(jwtAuth,{complete:true});
+
   console.log(`JWT-\n${jwtAuth}\n`);
-  console.log(`Decoded JWT-\n${JSON.stringify(jwt.decode(jwtAuth,{complete:true}),null)}\n`);
+  console.log(`Decoded JWT-\n${stringify(jwtDecoded.header)},${stringify(jwtDecoded.payload)}\n`);
+
   return jwtAuth;
 };
 
@@ -116,6 +125,110 @@ getJWT(issuer, subject, keyId, audience, data, privateKey);
 <!-- TODO: Include Sample Code for JAVA -->
 
 <!-- TODO: Include Sample Code for C# -->
+## C\#
+
+```
+using System.Security.Cryptography;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+using System;  
+using System.Text;  
+using System.Diagnostics;
+
+namespace ApexExample
+{
+    public class Program
+    {
+        public class PayloadJson
+        {
+            public string? payload { get; set; }
+        }
+        static string ComputeSha256Hash(string rawData)  
+        {  
+            using (SHA256 sha256Hash = SHA256.Create())  
+            {  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));  
+ 
+                StringBuilder builder = new StringBuilder();  
+                for (int i = 0; i < bytes.Length; i++)  
+                {  
+                    builder.Append(bytes[i].ToString("x2"));  
+                }  
+                return builder.ToString();  
+            }  
+        } 
+
+        public static void Main()
+        {
+
+            var payloadJson = new PayloadJson
+            {
+                payload = "data"
+            };
+            var crv = "P-256";
+            var d = "LUiL_tup7W-vapMlu2NpyTtFv73H1zETj-Oyr8UChzY";
+            var x = "lZU3Ic1QHBE5Ch9YajxQlqPicJL8lemiWfJga13RZrI";
+            var y = "ddqibUSW8DiYexc4IUokdPYEcq5UO9grbaj13PkHGhM";
+
+            var jti = Guid.NewGuid().ToString();
+            var iss = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy";
+            var aud = "https://public-dev.api.gov.sg/test/jwt";
+            var exp = 180;
+            var sub = "POST";
+            var kid = "apex-example";
+            var alg = "ES256";
+
+            var curve = crv switch
+            {
+                "P-256" => ECCurve.NamedCurves.nistP256,
+                "P-384" => ECCurve.NamedCurves.nistP384,
+                "P-521" => ECCurve.NamedCurves.nistP521,
+                _ => throw new NotSupportedException()
+            };
+
+            ECDsa key = ECDsa.Create(new ECParameters
+            {
+                Curve = curve,
+                D = Base64UrlEncoder.DecodeBytes(d), // optional
+                Q = new ECPoint
+                {
+                    X = Base64UrlEncoder.DecodeBytes(x),
+                    Y = Base64UrlEncoder.DecodeBytes(y)
+                },
+            });
+
+            string payload = JsonSerializer.Serialize(payloadJson);
+            string hash = ComputeSha256Hash(payload);
+            Console.WriteLine($"Payload-\n{payload}\n");
+            Console.WriteLine($"Payload-\n{hash}\n");
+
+            var now = DateTime.UtcNow;
+            var handler = new JsonWebTokenHandler();
+
+            string token = handler.CreateToken(new SecurityTokenDescriptor
+            {
+                Issuer = iss,
+                Audience = aud,
+                Expires = now.AddSeconds(exp),
+                IssuedAt = now,
+                Claims = new Dictionary<string, object> { { "sub", sub }, {"data", hash}, {"jti", jti} },
+                SigningCredentials = new SigningCredentials(new ECDsaSecurityKey(key){KeyId = kid}, alg),
+            });
+            Console.WriteLine($"JWT-\n{token}\n");
+
+            var securityHandler = new JwtSecurityTokenHandler();
+            var jsonToken = securityHandler.ReadToken(token);
+            var tokenString = jsonToken as JwtSecurityToken;
+            Console.WriteLine($"Decoded JWT-\n{tokenString}\n");
+        }
+    }
+}
+```
 
 ## Sample Output
 ```
@@ -129,5 +242,6 @@ JWT-
 eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFwZXgtZXhhbXBsZSJ9.eyJkYXRhIjoiY2M1NzVjNGVkNTU3NDgxZTMxZDlhMmEwNTgwYmM0NjRlODRiM2E3OWM1ZmM5NGU0ZmQ5NGJhMzNiM2U1NGRiYyIsImlhdCI6MTY2NzI3MzUwNiwiZXhwIjoxNjY3MjczNjg2LCJhdWQiOiJodHRwczovL3B1YmxpYy1zdGcuYXBpLmdvdi5zZy9hZ2VuY3kvYXBpIiwiaXNzIjoieHh4eHh4eHgteHh4eC14eHh4LXh4eHgteHh4eHh4eHh4eHgseXl5eXl5eXkteXl5eS15eXl5LXl5eXkteXl5eXl5eXl5eXkiLCJzdWIiOiJQT1NUIiwianRpIjoiZWYxYzJjN2EtNTlhNi00NjZiLThlNTQtZDFlZTM5MWVhYTE3In0.IArhd2SJ1hoIkJlek1KKwoGPXahYOJ5bmgJTMnuUdPDiBR57iPdLY3SvqJj3qP-KHmdCt6HCDjM-6nawGYIJ6Q
 
 Decoded JWT-
-{"header":{"alg":"ES256","typ":"JWT","kid":"apex-example"},"payload":{"data":"cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc","iat":1667273506,"exp":1667273686,"aud":"https://public-stg.api.gov.sg/agency/api","iss":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy","sub":"POST","jti":"ef1c2c7a-59a6-466b-8e54-d1ee391eaa17"},"signature":"IArhd2SJ1hoIkJlek1KKwoGPXahYOJ5bmgJTMnuUdPDiBR57iPdLY3SvqJj3qP-KHmdCt6HCDjM-6nawGYIJ6Q"}
+{"alg":"ES256","typ":"JWT","kid":"apex-example"},{"data":"cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc","iat":1667273506,"exp":1667273686,"aud":"https://public-stg.api.gov.sg/agency/api","iss":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy","sub":"POST","jti":"ef1c2c7a-59a6-466b-8e54-d1ee391eaa17"},"signature":"IArhd2SJ1hoIkJlek1KKwoGPXahYOJ5bmgJTMnuUdPDiBR57iPdLY3SvqJj3qP-KHmdCt6HCDjM-6nawGYIJ6Q"}
 ```
+Note that the output for C# will include **nbf** but this will not be inspected.
