@@ -141,12 +141,12 @@ using System.Diagnostics;
 
 namespace ApexExample
 {
+    public class PayloadJson
+    {
+        public string? payload { get; set; }
+    }
     public class Program
     {
-        public class PayloadJson
-        {
-            public string? payload { get; set; }
-        }
         static string ComputeSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
