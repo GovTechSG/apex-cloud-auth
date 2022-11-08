@@ -145,6 +145,7 @@ namespace ApexExample
     {
         public string? payload { get; set; }
     }
+
     public class Program
     {
         static string ComputeSha256Hash(string rawData)
