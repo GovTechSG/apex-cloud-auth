@@ -1,12 +1,13 @@
 # Introduction to Hello World!
 
-Hello World! APIs are used to test authorization header (***x-apex-jwt***), to help developers in testing their signing codes. 
+Hello World! APIs are used to test authorization header (**_x-apex-jwt_**), to help developers in testing their signing codes.
 
 ## Hello World! using JWT Authentication
 
 This API tests that the JWT in **x-apex-jwt** header is valid and will return with a Hello World! if successfully authenticated.
 
 Example API Test:
+
 ```
 POST /helloworld/jwt
 Host: public-stg.api.gov.sg
@@ -16,52 +17,40 @@ Response:
 HTTP/1.1 200 OK
 Hello World!
 ```
+
 <!-- TODO: Include Swagger and screenshot -->
 
 ## SHA-256 Generator
 
-This API evaluates the sha-256 of the API payload based on the binary content and returns it in the response body.  If **x-apex-returncontent** is included as a header with any value, the API payload is returned below the hash (in UTF-8).
+This API evaluates the sha-256 of the API payload based on the binary content and returns it in the response body. If **x-apex-returncontent** is included as a header with any value, the API payload is returned below the hash (in UTF-8).
 
 Example API Test:
+
 ```
 POST /helloworld/sha256
 Host: public-stg.api.gov.sg
 x-apex-apikey: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
-{"payload":"data"} 
+{"payload":"data"}
 
 Response:
 HTTP/1.1 200 OK
-cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc
+x-apex-sha256: cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc
 ```
 
 Example API Test with x-apex-returncontent:
+
 ```
 POST /helloworld/sha256
 Host: public-stg.api.gov.sg
 x-apex-apikey: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 x-apex-returncontent: yes
-{"payload":"data"} 
+{"payload":"data"}
 
 Response:
 HTTP/1.1 200 OK
-cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc
+x-apex-sha256: cc575c4ed557481e31d9a2a0580bc464e84b3a79c5fc94e4fd94ba33b3e54dbc
 
-{"payload":"data"} 
+{"payload":"data"}
 ```
-<!-- TODO: Include Swagger and screenshot -->
 
-## Hello World! using API Key
-
-This API tests that the JWT in **x-apex-apikey** header is valid and will return with a Hello World! if successfully authenticated.
-
-Example API Test:
-```
-POST /helloworld/apikey
-Host: public-stg.api.gov.sg
-x-apex-apikey: xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
-
-Response:
-HTTP/1.1 200 OK
-Hello World!
-```
 <!-- TODO: Include Swagger and screenshot -->
