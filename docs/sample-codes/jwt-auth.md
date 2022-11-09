@@ -286,8 +286,7 @@ namespace ApexExample
 
             /*
                 ***** IMPORT PRIVATE KEY  ******
-                The signing options are adding here based on function input.
-                Issued at time, or 'iat' is added by the library.
+                Private Key Import Using Curve Coordinates
             */
             var crv = "P-256";
             var x = "usZhq9AL4aC-hkzGCBK3RuJjmxKE6zqEdFyp-tQ8kh4";
@@ -310,6 +309,12 @@ namespace ApexExample
                     Y = Base64UrlEncoder.DecodeBytes(y)
                 },
             });
+
+            // Private Key Import Using PEM file
+            // var eccPem = File.ReadAllText("privatekey.pem");
+
+            // ECDsa key = ECDsa.Create();
+            // key.ImportFromPem(eccPem);
 
             /*
                 ***** CREATE JWT *****
