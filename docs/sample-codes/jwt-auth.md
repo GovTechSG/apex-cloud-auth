@@ -287,6 +287,8 @@ namespace ApexExample
             /*
                 ***** IMPORT PRIVATE KEY  ******
                 Private Key Import Using Curve Coordinates
+
+                For production use, these key coordinates should be stored in a vault.
             */
             var crv = "P-256";
             var x = "usZhq9AL4aC-hkzGCBK3RuJjmxKE6zqEdFyp-tQ8kh4";

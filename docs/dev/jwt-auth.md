@@ -26,7 +26,7 @@ Please note that 2 API Keys will be required for a bridging API. The Publisher s
 
 ## Prerequisites-JWKS Endpoint
 
-The Developer will have to generate a JSON Web Key (JWK) set for signing their authorization header, of an Elliptical Curve P-256 key set(**_recommended_**) (ES256) or an RSA key set (RS256).
+The Developer will have to generate a JSON Web Key (JWK) set for signing their authorization header, of an Elliptical Curve P-256 key set (ES256).
 
 With the **public key** generated, the developer will have to either,
 
