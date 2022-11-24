@@ -16,7 +16,7 @@ The Developer will have to get the API Endpoint URL from the Publisher. This wil
 
 ## Prerequisites-API Key(s)
 
-The Developer will have to create the respective Application(s) to subscribe to the API(s) provided by the Publisher. (eg. xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx)
+The Developer will have to create the respective Application(s) to subscribe to the API(s) provided by the Publisher. In the Authentication section of the Application, the API Key can be generated (eg. xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx).
 
 Please note that 2 API Keys will be required for a bridging API. The Publisher should inform you if your API is a bridging API.
 
