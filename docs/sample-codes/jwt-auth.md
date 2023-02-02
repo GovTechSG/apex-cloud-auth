@@ -377,7 +377,7 @@ The HTTP header may be required to be injected to a SOAP request (see below for 
 
 ### Formatted SOAP payload
 
-1. It is recommended that the payloads have new-lines removed (CRLF: 0x0D,0x0A and LF: 0x0A).
+1. It is recommended but not mandatory that the payloads have new-lines removed (CRLF: 0x0D,0x0A and LF: 0x0A).
 2. In the case where payloads do not have new-lines removed, the replacement of CRLF to LF should be carried out before any hashing is carried out, in line with XML standards (https://www.w3.org/TR/2004/REC-xml-20040204/#sec-line-ends)
 
 ```
