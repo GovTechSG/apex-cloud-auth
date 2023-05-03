@@ -132,7 +132,6 @@ import java.util.UUID;
 import java.io.FileReader;
 import java.io.File;
 import java.io.IOException;
-import java.math.BigInteger;
 
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSHeader;
@@ -173,7 +172,11 @@ public class Jwt {
         String jsonstring = "{\"payload\":\"data\"}";
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] digest = md.digest(jsonstring.getBytes("UTF-8"));
-        String hashPayload = (new BigInteger(1, digest)).toString(16);
+        StringBuilder sb = new StringBuilder();
+        for (byte b : digest) {
+        sb.append(String.format("%02x", b));
+        }
+        String hashPayload = sb.toString();
 
         /*
          ***** READ PRIVATE KEY *****
