@@ -174,7 +174,7 @@ public class Jwt {
         byte[] digest = md.digest(jsonstring.getBytes("UTF-8"));
         StringBuilder sb = new StringBuilder();
         for (byte b : digest) {
-        sb.append(String.format("%02x", b));
+            sb.append(String.format("%02x", b));
         }
         String hashPayload = sb.toString();
 
