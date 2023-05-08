@@ -82,7 +82,7 @@ const getJWT = async (iss, sub, kid, aud, hash, privateKey) => {
 /*
     ***** DEFINE SIGNING VARIABLES *****
     Here the following JWT claims are defined:
-    - issuer
+    - issuer : API Key(s) with the format: (1) api-key-1 or (2) api-key-1,api-key2
     - subject
     - key ID
     - audience
@@ -154,7 +154,7 @@ public class Jwt {
          * - jti : UUID V4 (jwtID)
          * - sub : Method
          * - aud : Endpoint
-         * - iss : API Key(s)
+         * - iss : API Key(s) with the format: (1) api-key-1 or (2) api-key-1,api-key2
          * - kid : Key ID
          * - iat : Current date and time
          * - exp : Expiry date and time
@@ -163,8 +163,8 @@ public class Jwt {
          */
         String jti = UUID.randomUUID().toString();
         String sub = "POST";
-        String aud = "https://public-dev.api.gov.sg/test/jwt";
-        String iss = "64858388-5b76-496a-95b1-82b3bf4b4683";
+        String aud = "https://public-dev.api.gov.sg/helloworld/jwt";
+        String iss = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy";
         String kid = "apex-example";
         Date iat = new Date();
         Date exp = new Date(iat.getTime() + 180 * 1000);
@@ -259,7 +259,7 @@ namespace ApexExample
             /*
                 ***** DEFINE SIGNING VARIABLES *****
                 Here the following JWT claims are defined:
-                - issuer
+                - issuer : API Key(s) with the format: (1) api-key-1 or (2) api-key-1,api-key2
                 - subject
                 - key ID
                 - audience
@@ -271,8 +271,8 @@ namespace ApexExample
                 In a real scenario this will be in a secure vault and should not be in program code.
             */
             var jti = Guid.NewGuid().ToString();
-            var iss = "64858388-5b76-496a-95b1-82b3bf4b4683";
-            var aud = "https://public-dev.api.gov.sg/test/jwt";
+            var iss = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy";
+            var aud = "https://public-dev.api.gov.sg/helloworld/jwt";
             var exp = 180;
             var sub = "POST";
             var kid = "apex-example";
