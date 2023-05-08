@@ -154,7 +154,7 @@ public class Jwt {
          * - jti : UUID V4 (jwtID)
          * - sub : Method
          * - aud : Endpoint
-         * - iss : App ID
+         * - iss : API Key(s)
          * - kid : Key ID
          * - iat : Current date and time
          * - exp : Expiry date and time
