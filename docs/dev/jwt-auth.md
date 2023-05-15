@@ -86,7 +86,7 @@ An example of an APEX standardized JSON string is:
 
 For purposes of consistency of SHA256 data hash across different OS to ease troubleshooting, SOAP payload shall be serialized into a single string without any Carriage Return and Line Feed. These should be removed: CRLF ('\r\n' or 0x0D 0x0A) and LF ('\n' or 0x0A) and it is recommended to use UTF-8.
 
-The resultant text is hashed, before sending the serialized string as the payload for the API request.
+The resultant text is hashed, before sending the serialized string as the payload for the API request.</small>
 
 ```
 An example of an APEX standardized SOAP string is:
