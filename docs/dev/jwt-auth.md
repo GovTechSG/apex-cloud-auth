@@ -39,6 +39,9 @@ Usually the key/value pairs of "**_use_**", "**_kid_**" will have to be appended
 
 A commerical service such as [auth0](https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-key-sets#:~:text=The%20JSON%20Web%20Key%20Set,signing%20JWTs%3A%20RS256%20and%20HS256.) may can help with the hosting of the JWKS keys.
 
+Do take note that if JWKS endpoint is specified, the user may need to validate that APEX has sufficient outwards connectivity to the JWKS endpoint and using [valid CA certificate authority](https://docs.developer.tech.gov.sg/docs/apex-cloud-troubleshooting-guide/docs/networking/networking-issues).
+
+
 ## Example of JWKS
 
 This is an example of a public JWKS with a JWK consisting of Endian coordinates of P-256 EC curve. Do note that the "d" coordinate is omitted as it will define the private key.

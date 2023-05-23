@@ -6,5 +6,7 @@
   - [APEX Flow Diagrams](docs/dev/apex-flow-diagrams.md)
   **Sample Codes**
   - [JWT Authentication](docs/sample-codes/jwt-auth.md)
+  **Troubleshooting**
+  - [JWT Authentication](docs/troubleshooting/jwt-auth.md)
 - **Hello World!**
   - [JWT Authentication](docs/hello-world/jwt-auth.md)
