@@ -46,6 +46,8 @@ Do take note that if JWKS endpoint is specified, the user may need to validate t
 
 This is an example of a public JWKS with a JWK consisting of Endian coordinates of P-256 EC curve. Do note that the "d" coordinate is omitted as it will define the private key.
 
+**It should be noted that authentication will fail if any of the keys are absent (eg. use, kid, alg), or if the JSON format is not correct.**
+
 ```
 {
     "keys": [
@@ -63,6 +65,13 @@ This is an example of a public JWKS with a JWK consisting of Endian coordinates 
 ```
 
 <!-- TODO: Add image -->
+
+
+## Generating JWKS
+
+While it is recommended to generate the JWKS programatically to allow programatic/automatic rotation of JWKS keys, it can also be generated from a website like [https://mkjwk.org/](https://mkjwk.org/) with specifications such as Curve: P-256, Key Use: Signature, Algorithm: ES256, Key ID: SHA-256.
+
+
 
 ## API Payload Hash
 
