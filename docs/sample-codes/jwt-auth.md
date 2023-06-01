@@ -121,7 +121,7 @@ getJWT(issuer, subject, keyId, audience, hash, privateKey);
 
 ## JAVA
 
-### 1. Read Private Key from PEM file
+### Read Private Key from PEM file
 
 ```
 import java.security.MessageDigest;
@@ -217,7 +217,7 @@ public class Jwt {
 }
 ```
 
-### 2. Use Private Key in JWK format
+### Private Key in JWK format
 
 ```
 import java.security.MessageDigest;
@@ -273,7 +273,6 @@ public class JwtWithJwksPrivateKey {
       sb.append(String.format("%02x", b));
     }
     String hashPayload = sb.toString();
-    System.out.println(hashPayload);
 
     /*
      ***** PRIVATE KEY *****
