@@ -227,6 +227,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.UUID;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.ParseException;
 
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSHeader;
@@ -236,7 +239,6 @@ import com.nimbusds.jose.crypto.ECDSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.nimbusds.jose.jwk.JWK;
-import java.text.ParseException;
 
 public class JwtWithJwksPrivateKey {
   public static void main(String[] args)
@@ -277,19 +279,25 @@ public class JwtWithJwksPrivateKey {
     /*
      ***** PRIVATE KEY *****
      * ecPrivateKey : Private key in JWK to sign JWT.
+     *
+     * Create new file e.g. jwks.json and input your JWK.
+     * ------ Example of jwks.json -------
      * {
-     *    kty: 'EC',
-     *    crv: 'P-256',
-     *    x: 'usZhq9AL4aC-hkzGCBK3RuJjmxKE6zqEdFyp-tQ8kh4',
-     *    y: 'wHI1r6rQCHQQSAdNxaJDA0Tw5Fq3B-icq-mbMVlLZA4',
-     *    d: 'w55YEByLRumO-Rnsc8jg2_MaYXfEiT_ioFVoGgrCTlg',
-     *    use: 'sig',
-     *    kid: 'apex-example',
-     *    alg: 'ES256',
+     *      "kty": "EC",
+     *      "crv": "P-256",
+     *      "x": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+     *      "y": "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
+     *      "d": "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzz",
+     *      "use": "sig",
+     *      "kid": "apex-example",
+     *      "alg": "ES256"
      * }
+     * -----------------------------------
+     * For quick guide to generate JWK for testing purpose,
+     * refer to https://docs.developer.tech.gov.sg/docs/apex-cloud-authentication/docs/dev/jwt-auth?id=generating-jwks
      */
-    String privateKey = "{\"kty\":\"EC\",\"crv\":\"P-256\",\"x\":\"usZhq9AL4aC-hkzGCBK3RuJjmxKE6zqEdFyp-tQ8kh4\",\"y\":\"wHI1r6rQCHQQSAdNxaJDA0Tw5Fq3B-icq-mbMVlLZA4\",\"d\":\"w55YEByLRumO-Rnsc8jg2_MaYXfEiT_ioFVoGgrCTlg\",\"use\":\"sig\",\"kid\":\"apex-example\",\"alg\":\"ES256\"}";
-    JWK jwk = JWK.parse(privateKey);
+    String jwkString = new String(Files.readAllBytes(Paths.get("path/to/jwks.json")));
+    JWK jwk = JWK.parse(jwkString);
     ECPrivateKey ecPrivateKey = (ECPrivateKey) jwk.toECKey().toECPrivateKey();
 
     /*
