@@ -277,7 +277,7 @@ public class Jwt {
          */
         String jti = UUID.randomUUID().toString();
         String sub = "POST";
-        String aud = "https://public-dev.api.gov.sg/helloworld/jwt";
+        String aud = "https://public-stg.api.gov.sg/helloworld/jwt";
         String iss = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy";
         String kid = "apex-example";
         Date iat = new Date();
