@@ -189,7 +189,7 @@ public class Jwt {
          ***** READ PRIVATE KEY *****
          * ecPrivateKey : Private key to sign JWT
          *
-         * Example of private key pem file. It should be in PKCS#8 format (with "BEGIN EC PRIVATE KEY")
+         * Example of private key pem file. PEM header with BEGIN PRIVATE EC KEY.
          * -----BEGIN EC PRIVATE KEY-----
          * ............
          * ...........
@@ -197,7 +197,7 @@ public class Jwt {
          * -----END EC PRIVATE KEY-----
          *
          * Note:
-         * - Private key that start with BEGIN PRIVATE KEY / END PRIVATE KEY (without"EC") will encounter error,
+         * - PEM header with BEGIN PRIVATE KEY (without"EC") will encounter error,
          * e.g. "org.bouncycastle.asn1.pkcs.PrivateKeyInfo cannot be cast to org.bouncycastle.openssl.PEMKeyPair"
          */
         PEMParser pemParser = new PEMParser(new FileReader(new File("relativepath/to/privatekey.pem")));
