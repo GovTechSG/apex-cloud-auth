@@ -305,13 +305,13 @@ public class Jwt {
          *
          * Note:
          * - PEM header with BEGIN PRIVATE KEY (without "EC") will encounter error,
-         * e.g. "org.bouncycastle.asn1.pkcs.PrivateKeyInfo cannot be cast to org.bouncycastle.openssl.PEMKeyPair"
+         *   e.g. "org.bouncycastle.asn1.pkcs.PrivateKeyInfo cannot be cast to org.bouncycastle.openssl.PEMKeyPair"
          * - This block of code uses bouncycastle to parse pem file to get
-         * correct private key format (ECPrivateKey) for signing JWT
-         * and any library can be use to replace this block of code so long
-         * it serve the purpose.
+         *   correct private key format (ECPrivateKey) for signing JWT
+         *   and any library can be use to replace this block of code so long
+         *   it serve the purpose.
          * - If you have issue generating the correct private key format,
-         * consider using java sample code with JWK private key.
+         *   consider using java sample code with JWK private key.
          */
         PEMParser pemParser = new PEMParser(new FileReader(new File("relativepath/to/privatekey.pem")));
         Object object = pemParser.readObject();
