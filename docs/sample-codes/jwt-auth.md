@@ -160,6 +160,9 @@ public class Jwt {
          * - exp : Expiry date and time
          * - payload : JSON payload (empty string if there are no payload)
          * - hashPayload : Hash the payload with SHA-256
+         *
+         * For more information, refer to documents JWT Authentication > Generating JWT.
+         * https://docs.developer.tech.gov.sg/docs/apex-cloud-authentication/docs/dev/jwt-auth?id=generating-jwt
          */
         String jti = UUID.randomUUID().toString();
         String sub = "POST";
