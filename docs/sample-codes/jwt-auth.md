@@ -230,7 +230,7 @@ public class JwtWithJwkPrivateKey {
 }
 ```
 
-### Read Private Key from PEM file
+### Private Key in PEM format
 
 ```
 import java.security.MessageDigest;
