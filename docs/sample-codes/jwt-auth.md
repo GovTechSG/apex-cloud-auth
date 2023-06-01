@@ -282,8 +282,8 @@ public class JwtWithJwksPrivateKey {
      ***** PRIVATE KEY *****
      * ecPrivateKey : Private key in JWK to sign JWT.
      *
-     * Create new file e.g. jwks.json and input your JWK.
-     * ------ Example of jwks.json -------
+     * Create new file e.g. jwk.json and input your JWK.
+     * ------ Example of jwk.json -------
      * {
      *      "kty": "EC",
      *      "crv": "P-256",
@@ -298,7 +298,7 @@ public class JwtWithJwksPrivateKey {
      * For quick guide to generate JWK for testing purpose,
      * refer to https://docs.developer.tech.gov.sg/docs/apex-cloud-authentication/docs/dev/jwt-auth?id=generating-jwks
      */
-    String jwkString = new String(Files.readAllBytes(Paths.get("path/to/jwks.json")));
+    String jwkString = new String(Files.readAllBytes(Paths.get("path/to/jwk.json")));
     JWK jwk = JWK.parse(jwkString);
     ECPrivateKey ecPrivateKey = (ECPrivateKey) jwk.toECKey().toECPrivateKey();
 
