@@ -2,6 +2,8 @@
 
 These are sample codes to help the Developer in coding for the JWT header. Do note that these are for reference only and not intended for production use.
 
+Start your testing with the hello world API! Refer to https://docs.developer.tech.gov.sg/docs/apex-cloud-authentication/docs/hello-world/jwt-auth for more information.
+
 ## Node JS
 
 ```
