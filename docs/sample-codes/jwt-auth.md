@@ -146,7 +146,7 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.nimbusds.jose.jwk.JWK;
 
-public class JwtWithJwksPrivateKey {
+public class JwtWithJwkPrivateKey {
   public static void main(String[] args)
       throws NoSuchAlgorithmException, JOSEException, IOException, InvalidKeySpecException, ParseException {
     /*
