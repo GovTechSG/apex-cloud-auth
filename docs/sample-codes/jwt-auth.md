@@ -123,14 +123,11 @@ getJWT(issuer, subject, keyId, audience, hash, privateKey);
 
 ```
 import java.security.MessageDigest;
-import java.security.KeyPair;
 import java.security.interfaces.ECPrivateKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.UUID;
-import java.io.FileReader;
-import java.io.File;
 import java.io.IOException;
 
 import com.nimbusds.jose.JOSEException;
@@ -140,78 +137,85 @@ import com.nimbusds.jose.JOSEObjectType;
 import com.nimbusds.jose.crypto.ECDSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import com.nimbusds.jose.jwk.JWK;
+import java.text.ParseException;
 
-import org.bouncycastle.openssl.PEMParser;
-import org.bouncycastle.openssl.PEMKeyPair;
-import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
+public class JwtWithJwksPrivateKey {
+  public static void main(String[] args)
+      throws NoSuchAlgorithmException, JOSEException, IOException, InvalidKeySpecException, ParseException {
+    /*
+     ***** SIGNING VARIABLES *****
+     * JWT sign values and claims are defined:
+     * - jti : UUID V4 (jwtID)
+     * - sub : Method
+     * - aud : Endpoint
+     * - iss : API Key(s) with the format: (1) api-key-1 or (2) api-key-1,api-key2
+     * - kid : Key ID
+     * - iat : Current date and time
+     * - exp : Expiry date and time
+     * - payload : JSON payload (empty string if there are no payload)
+     * - hashPayload : Hash the payload with SHA-256
+     *
+     * For more information, refer to documents JWT Authentication > Generating JWT.
+     * https://docs.developer.tech.gov.sg/docs/apex-cloud-authentication/docs/dev/jwt-auth?id=generating-jwt
+     */
+    String jti = UUID.randomUUID().toString();
+    String sub = "POST";
+    String aud = "https://public-stg.api.gov.sg/helloworld/jwt";
+    String iss = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+    String kid = "apex-example";
+    Date iat = new Date();
+    Date exp = new Date(iat.getTime() + 180 * 1000);
 
-public class Jwt {
-    public static void main(String[] args)
-            throws NoSuchAlgorithmException, JOSEException, IOException, InvalidKeySpecException {
-        /*
-         ***** SIGNING VARIABLES *****
-         * JWT sign values and claims are defined:
-         * - jti : UUID V4 (jwtID)
-         * - sub : Method
-         * - aud : Endpoint
-         * - iss : API Key(s) with the format: (1) api-key-1 or (2) api-key-1,api-key2
-         * - kid : Key ID
-         * - iat : Current date and time
-         * - exp : Expiry date and time
-         * - payload : JSON payload (empty string if there are no payload)
-         * - hashPayload : Hash the payload with SHA-256
-         *
-         * For more information, refer to documents JWT Authentication > Generating JWT.
-         * https://docs.developer.tech.gov.sg/docs/apex-cloud-authentication/docs/dev/jwt-auth?id=generating-jwt
-         */
-        String jti = UUID.randomUUID().toString();
-        String sub = "POST";
-        String aud = "https://public-dev.api.gov.sg/helloworld/jwt";
-        String iss = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx,yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy";
-        String kid = "apex-example";
-        Date iat = new Date();
-        Date exp = new Date(iat.getTime() + 180 * 1000);
-
-        String jsonstring = "{\"payload\":\"data\"}";
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] digest = md.digest(jsonstring.getBytes("UTF-8"));
-        StringBuilder sb = new StringBuilder();
-        for (byte b : digest) {
-            sb.append(String.format("%02x", b));
-        }
-        String hashPayload = sb.toString();
-
-        /*
-         ***** READ PRIVATE KEY *****
-         * ecPrivateKey : Private key to sign JWT
-         */
-        PEMParser pemParser = new PEMParser(new FileReader(new File("relativepath/to/privatekey.pem")));
-        Object object = pemParser.readObject();
-        JcaPEMKeyConverter converter = new JcaPEMKeyConverter();
-        KeyPair kp = converter.getKeyPair(((PEMKeyPair) object));
-        ECPrivateKey ecPrivateKey = (ECPrivateKey) kp.getPrivate();
-
-        /*
-         ***** CREATE JWT *****
-         * signedJWT.serialize() : JWT to append in header (x-apex-jwt).
-         */
-        JWSHeader jwsHeader = new JWSHeader.Builder(JWSAlgorithm.ES256)
-                .keyID(kid)
-                .type(JOSEObjectType.JWT)
-                .build();
-        JWTClaimsSet claimSet = new JWTClaimsSet.Builder()
-                .issuer(iss)
-                .subject(sub)
-                .issueTime(iat)
-                .jwtID(jti)
-                .expirationTime(exp)
-                .claim("data", hashPayload)
-                .claim("aud", aud)
-                .build();
-        SignedJWT signedJWT = new SignedJWT(jwsHeader, claimSet);
-        signedJWT.sign(new ECDSASigner(ecPrivateKey));
-        System.out.println(signedJWT.serialize());
+    String jsonstring = "{\"payload\":\"data\"}";
+    MessageDigest md = MessageDigest.getInstance("SHA-256");
+    byte[] digest = md.digest(jsonstring.getBytes("UTF-8"));
+    StringBuilder sb = new StringBuilder();
+    for (byte b : digest) {
+      sb.append(String.format("%02x", b));
     }
+    String hashPayload = sb.toString();
+    System.out.println(hashPayload);
+
+    /*
+     ***** PRIVATE KEY *****
+     * ecPrivateKey : Private key in JWK to sign JWT.
+     * {
+     *    kty: 'EC',
+     *    crv: 'P-256',
+     *    x: 'usZhq9AL4aC-hkzGCBK3RuJjmxKE6zqEdFyp-tQ8kh4',
+     *    y: 'wHI1r6rQCHQQSAdNxaJDA0Tw5Fq3B-icq-mbMVlLZA4',
+     *    d: 'w55YEByLRumO-Rnsc8jg2_MaYXfEiT_ioFVoGgrCTlg',
+     *    use: 'sig',
+     *    kid: 'apex-example',
+     *    alg: 'ES256',
+     * }
+     */
+    String privateKey = "{\"kty\":\"EC\",\"crv\":\"P-256\",\"x\":\"usZhq9AL4aC-hkzGCBK3RuJjmxKE6zqEdFyp-tQ8kh4\",\"y\":\"wHI1r6rQCHQQSAdNxaJDA0Tw5Fq3B-icq-mbMVlLZA4\",\"d\":\"w55YEByLRumO-Rnsc8jg2_MaYXfEiT_ioFVoGgrCTlg\",\"use\":\"sig\",\"kid\":\"apex-example\",\"alg\":\"ES256\"}";
+    JWK jwk = JWK.parse(privateKey);
+    ECPrivateKey ecPrivateKey = (ECPrivateKey) jwk.toECKey().toECPrivateKey();
+
+    /*
+     ***** CREATE JWT *****
+     * signedJWT.serialize() : JWT to append in header (x-apex-jwt).
+     */
+    JWSHeader jwsHeader = new JWSHeader.Builder(JWSAlgorithm.ES256)
+        .keyID(kid)
+        .type(JOSEObjectType.JWT)
+        .build();
+    JWTClaimsSet claimSet = new JWTClaimsSet.Builder()
+        .issuer(iss)
+        .subject(sub)
+        .issueTime(iat)
+        .jwtID(jti)
+        .expirationTime(exp)
+        .claim("data", hashPayload)
+        .claim("aud", aud)
+        .build();
+    SignedJWT signedJWT = new SignedJWT(jwsHeader, claimSet);
+    signedJWT.sign(new ECDSASigner(ecPrivateKey));
+    System.out.println(signedJWT.serialize());
+  }
 }
 ```
 
