@@ -26,6 +26,8 @@ Please note that 2 API Keys will be required for a bridging API. The Publisher s
 
 ## Prerequisites-JWKS Endpoint
 
+An introduction to JWK and JWKS can be found [here](docs/dev/jwks-endpoint.md).
+
 The Developer will have to generate a JSON Web Key (JWK) set for signing their authorization header, of an Elliptical Curve P-256 key set (ES256).
 
 With the **public key** generated, the developer will have to either,
@@ -41,43 +43,23 @@ A commerical service such as [auth0](https://auth0.com/docs/secure/tokens/json-w
 
 Do take note that if JWKS endpoint is specified, the user may need to validate that APEX has sufficient outwards connectivity to the JWKS endpoint and using [valid CA certificate authority](https://docs.developer.tech.gov.sg/docs/apex-cloud-troubleshooting-guide/docs/networking/networking-issues).
 
+## Example of JWKS Endpoint
 
-## Example of JWKS
+Please refer [here](docs/dev/jwks-endpoint.md#example-of-jwks-endpoint) for more information.
 
-This is an example of a public JWKS with a JWK consisting of Endian coordinates of P-256 EC curve. Do note that the "d" coordinate is omitted as it will define the private key.
+## Utilizing JWKS endpoint in the Intranet
 
-**It should be noted that authentication will fail if any of the keys are absent (eg. use, kid, alg), or if the JSON format is not correct.**
-
-```
-{
-    "keys": [
-        {
-            "kty": "EC",
-            "crv": "P-256",
-            "x": "usZhq9AL4aC-hkzGCBK3RuJjmxKE6zqEdFyp-tQ8kh4",
-            "y": "wHI1r6rQCHQQSAdNxaJDA0Tw5Fq3B-icq-mbMVlLZA4",
-            "use": "sig",
-            "kid": "apex-example",
-            "alg": "ES256"
-        }
-    ]
-}
-```
-
-<!-- TODO: Add image -->
-
+Please refer [here](docs/dev/jwks-endpoint.md#utilizing-jwks-endpoint-in-the-intranet) for more information.
 
 ## Generating JWKS
 
-While it is recommended to generate the JWKS programatically to allow programatic/automatic rotation of JWKS keys, it can also be generated from a website like [https://mkjwk.org/](https://mkjwk.org/) with specifications such as Curve: P-256, Key Use: Signature, Algorithm: ES256, Key ID: SHA-256.
+Please refer [here](docs/dev/jwks-endpoint.md#generating-jwks) for more information.
 
-
+Please refer [here](docs/sample-codes/jwks-endpoint) for code samples.
 
 ## API Payload Hash
 
 If the API method is POST, PUT or PATCH, the API payload binary will have to be hashed using SHA-256. The Payload should be standardized [as below](#apex-standardized-json-payload) (for JSON payload).
-
-<!-- TODO: Optionally Include Sample Code -->
 
 ## <small>**APEX Standardized JSON Payload**
 
@@ -137,7 +119,7 @@ x-apex-jwt: eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFwZXgtZXhhbXBsZSJ9.eyJ
 
 ## JWK Rotation
 
-It is recommended that the JWK generated in the [Prerequisite](#prerequisites-jwks-endpoint) step used in the signing of JWT is rotated at least monthly. As the JWKS consists of a collection (array) of JWKs, rotation can be done by replacing the JWKS entirely or by changing the Key ID (kid) if there are a number of JWKs in the JWKS published to APEX.
+Please refer [here](docs/dev/jwks-endpoint.md#jwk-rotation) for more information.
 
 ## Hello World! APIs
 
