@@ -53,7 +53,7 @@ A sample code of how this can be programatically generated can be found [here](d
 
 ## Utilizing JWKS endpoint in the Intranet
 
-To utilize JWKS endpoint in the intranet, it is recommended for the Consumer of the API to contact the Publisher to allow the endpoint URL/IP to be whitelisted.
+To utilize JWKS endpoint in the intranet, it is recommended for the Consumer of the API to contact the API Publisher to allow the JWKS endpoint URL/IP to be whitelisted.
 
 ## Generating JWKS
 
@@ -69,4 +69,4 @@ Utilizing a JWKS endpoint with [programatic generation of JWKS](docs/sample-code
 
 Do note that the caching time for an Application's JWKS is 1 hour.
 
-If there are several JWKs published in the JWKS endpoint, it is possible to effect a seamless key rotation by signing with the new key and reflecting the new Key ID in the JWT.
+If there are several JWKs published in the JWKS endpoint, it is possible to effect a seamless key (JWK) rotation by signing with the new published key and reflecting the new Key ID in the JWT.
