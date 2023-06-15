@@ -16,3 +16,4 @@ Here are some suggestions to get started:
 - [Sample Codes for JWKS Endpoint](/docs/sample-codes/jwt-auth.md)
 - [Troubleshooting](/docs/troubleshooting/jwt-auth.md)
 - [Introduction to Hello World APIs](/docs/hello-world/jwt-auth.md)
+- [FAQs](/docs/faq/jwt-auth.md)

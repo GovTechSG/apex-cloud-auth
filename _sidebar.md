@@ -12,3 +12,5 @@
   - [JWT Authentication](docs/troubleshooting/jwt-auth.md)
 - **Hello World!**
   - [JWT Authentication](docs/hello-world/jwt-auth.md)
+- **FAQ**
+  - [JWT Authentication](docs/faq/jwt-auth.md)
