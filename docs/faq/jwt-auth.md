@@ -28,5 +28,9 @@ There could be time skew at the Consumer's server/application causing it to be e
 <br>**Q.** How do we troubleshoot **error 443 (JWT Header Missing)**?
 <br>**A.** The JWT header is not reaching APEX. Do register a new backend by going to this URL https://webhook.site and with the registered backend (eg. https://webhook.site/123456-1234-1234-1234-1234567890), use your application to call this. From your registered URL, you will be able to see if the header x-apex-jwt is indeed reaching the backend.
 
+<br>**Q.** How do we troubleshoot **error 433 (Invalid JWKS)**?
+<br>**A.** Do check that the JWKS is formatted correct in JSON (use only double quotes, key values need to be double-quoted, curly brackets and square brackets are correct).
+<br> Also, do ensure that the JWKs have all the required keys - "x", "y", "use", "crv", "kid", "alg", "kty". Any of these omitted will cause an error.
+
 <br>**Q.** How do we troubleshoot **error 490-499**?
 <br>**A.** Ensure that you are not reusing JWT tokens or using any forbidden headers. If you are still encountering issues, do open a troubleshooting case with APEX.
