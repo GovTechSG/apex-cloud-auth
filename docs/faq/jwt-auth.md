@@ -8,6 +8,11 @@
 <br>**Q.** Does Hello World Api exist in intranet?
 <br>**A.** Yes, Hello World exists both in internet and intranet zone, with domains public-stg.api.gov.sg and gw-stg.int.api.gov.sg.
 
+<br>**Q.** How do we carry out rotation of keys (JWK)?
+<br>**A.** As the consumer, your application would be involved in signing of the JWT using the private key.
+<br>Generate a new key with a new Key ID and add it to the JWKS endpoint ahead of time.  When the key is rotated, sign with the key with the new Key ID.
+<br>Do note however that JWKS caching in APEX servers is 1 hour hence it is still recommended to automate this for an off-peak rotation.
+
 <br>**Q.** How do we carry out automatic rotation of keys (JWK)?
 <br>**A.** As the consumer, your application would be involved in signing of the JWT using the private key.
 <br>Hence if your organization is able to host the public key in the form of a JWKS endpoint, you would be able to update the JWKS endpoint whenever you create a new private key for signing. Hence key rotation can be effected programatically with no human intervention.
