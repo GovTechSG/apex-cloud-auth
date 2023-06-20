@@ -16,7 +16,7 @@
 <br>**Q.** How do we carry out automatic rotation of keys (JWK)?
 <br>**A.** As the consumer, your application would be involved in signing of the JWT using the private key.
 <br>Hence if your organization is able to host the public key in the form of a JWKS endpoint, you would be able to update the JWKS endpoint whenever you create a new private key for signing. Hence key rotation can be effected programatically with no human intervention.
-<br>Do note however that JWKS caching in APEX servers is 1 hour hence it is still recommended to automate this for an off-peak rotation.
+<br>Do note however that JWKS caching in APEX servers is 1 hour hence you would have to update the JWKS endpoint at least an hour in advance.
 
 ## Troubleshooting
 
