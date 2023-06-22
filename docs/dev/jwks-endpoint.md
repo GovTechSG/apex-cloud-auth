@@ -70,3 +70,5 @@ Utilizing a JWKS endpoint with [programatic generation of JWKS](docs/sample-code
 Do note that the caching time for an Application's JWKS is 1 hour.
 
 If there are several JWKs published in the JWKS endpoint, it is possible to effect a seamless key (JWK) rotation by signing with the new published key and reflecting the new Key ID in the JWT.
+
+For whatever reason, if you need to force a reload of the JWKS immediately, do change the Consumer Application name and try again.
