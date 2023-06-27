@@ -31,7 +31,7 @@ APEX also supports manual input of the JWKS endpoint text of the Consumer in the
 
 Below is an example of what a JWKS endpoint looks like. Do note that the "d" coordinate is omitted as it will define the private key.
 
-**It should be noted that signature verification will fail if any of the parameters below are absent (eg. use, kid, alg), or if the JSON format (double-quotes of key-value pairs, as well as curly and square brackets) is not correct.**
+**It should be noted that signature verification will fail if any of the parameters below are absent (eg. use, kid, alg), if the JSON format (double-quotes of key and value pairs, as well as curly and square brackets) is not correct, or "keys" key-value is not in lower-case.**
 
 ```
 {
@@ -71,4 +71,3 @@ Do note that the caching time for an Application's JWKS is 1 hour.
 
 If there are several JWKs published in the JWKS endpoint, it is possible to effect a seamless key (JWK) rotation by signing with the new published key and reflecting the new Key ID in the JWT.
 
-For whatever reason, if you need to force a reload of the JWKS immediately, do change the Consumer Application name and try again.
