@@ -11,6 +11,7 @@ Here are some suggestions to get started:
 - [Introduction to JWT](/docs/dev/introduction.md)
 - [JWT Authentication](/docs/dev/jwt-auth.md)
 - [JWKS Endpoint](/docs/dev/jwks-endpoint.md)
+- [Setup for JWKS Endpoint](/docs/dev/setup-jwks-endpoint.md)
 - [APEX Flow Diagrams](/docs/dev/apex-flow-diagrams.md)
 - [Sample Codes for JWT Authentication](/docs/sample-codes/jwt-auth.md)
 - [Sample Codes for JWKS Endpoint](/docs/sample-codes/jwt-auth.md)
