@@ -1,6 +1,6 @@
 # Setup for JWKS Endpoint
 
-In the previous section we covered what basics of JWKS endpoint. To use the JWKS Endpoint for APEX, the following setup steps will be required.
+In the previous section we covered what basics of JWKS endpoint. To use the JWKS Endpoint for APEX, the following setup steps for networking will be required.
 
 ## External Zone
 
