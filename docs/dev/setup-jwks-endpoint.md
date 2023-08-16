@@ -12,7 +12,7 @@ Your TLS JWKS endpoint will need to be signed by a supported common trusted publ
 
 If you are a consumer of APEX API in the internal (intranet zone), you would just need to configure the JWKS endpoint in your Application and toggle to "Use JWKS Endpoint".
 
-Your TLS JWKS endpoint will need to be signed by a supported common trusted public root CA or by SGCore's root CA. Self-signed endpoints are not supported.
+Your TLS JWKS endpoint will need to be signed by a supported common trusted public root CA or by SGCore's root CA. Self-signed endpoints are not supported. Recommended CAs can be found [here](https://docs.developer.tech.gov.sg/docs/apex-cloud-user-guide/docs/general/trusted-certificate-authorities). Do ignore the notice at the bottom meant for Publishers.
 
 The next section will describe action(s) needed for APEX to access your JWKS endpoint in the internal zone.
 
@@ -33,4 +33,3 @@ b) However, for the following zone, there is a need to set routes in your cloud 
 c) Lastly, for the third category of zones, there may be a need to clear firewall(s) from the CLZ to your intranet server. Do raise a service desk request to get instructions for clearing the relevant firewall(s).
 
 **- GEN intranet**
-
