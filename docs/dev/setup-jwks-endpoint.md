@@ -30,6 +30,6 @@ b) However, for the following zone, there is a need to set routes in your cloud 
 
 </br>
 
-c) Lastly, for the third category of zones, there may be a need to clear firewall(s) from the CLZ to your intranet server. Do raise a service desk request to get instructions for clearing the relevant firewall(s).
+c) Lastly, for the third category of zones, there may be a need to clear firewall(s) from the CLZ to your server. Do raise a service desk request to get instructions for clearing the relevant firewall(s).
 
 **- GEN intranet, BMNet, GPC**
