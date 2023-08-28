@@ -126,7 +126,7 @@ getJWT(issuer, subject, keyId, audience, hash, privateKey);
 ### Private Key in JWK format
 
 ```
-import java.security.MessageDigest;
+import org.apache.commons.codec.digest.DigestUtils;
 import java.security.interfaces.ECPrivateKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.NoSuchAlgorithmException;
@@ -174,13 +174,7 @@ public class JwtWithJwkPrivateKey {
     Date exp = new Date(iat.getTime() + 180 * 1000);
 
     String jsonstring = "{\"payload\":\"data\"}";
-    MessageDigest md = MessageDigest.getInstance("SHA-256");
-    byte[] digest = md.digest(jsonstring.getBytes("UTF-8"));
-    StringBuilder sb = new StringBuilder();
-    for (byte b : digest) {
-      sb.append(String.format("%02x", b));
-    }
-    String hashPayload = sb.toString();
+    String hashPayload = org.apache.commons.codec.digest.DigestUtils.sha256Hex(jsonstring);
 
     /*
      ***** PRIVATE KEY *****
@@ -233,7 +227,7 @@ public class JwtWithJwkPrivateKey {
 ### Private Key in PEM format
 
 ```
-import java.security.MessageDigest;
+import org.apache.commons.codec.digest.DigestUtils;
 import java.security.KeyPair;
 import java.security.interfaces.ECPrivateKey;
 import java.security.spec.InvalidKeySpecException;
@@ -284,13 +278,7 @@ public class Jwt {
         Date exp = new Date(iat.getTime() + 180 * 1000);
 
         String jsonstring = "{\"payload\":\"data\"}";
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] digest = md.digest(jsonstring.getBytes("UTF-8"));
-        StringBuilder sb = new StringBuilder();
-        for (byte b : digest) {
-            sb.append(String.format("%02x", b));
-        }
-        String hashPayload = sb.toString();
+        String hashPayload = org.apache.commons.codec.digest.DigestUtils.sha256Hex(jsonstring);
 
         /*
          ***** READ PRIVATE KEY *****
